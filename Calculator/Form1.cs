@@ -12,10 +12,10 @@ namespace Calculator
 {
     public partial class Form1 : Form
     {
+        //Varaibles:
         double resultValue = 0;
         string operationPerformed = "";
         bool isOperationPerformed = false;
-        // Until Here:
         bool isEqualPerformed = false;
         bool isOneOverXPerformed = false;
         bool isSquarePerformed = false;
@@ -35,9 +35,11 @@ namespace Calculator
 
         private void Button_Click(object sender, EventArgs e)
         {
+            //Function that gets the button that we click
             if (isEqualPerformed || isSinPerformed || isCosPerformed 
                 || isOneOverXPerformed || isSquarePerformed || isSquareRootPerformed)
             {
+                //Set everything to false for optimaization of use 
                 TextBox_Result.Text = "";
                 resultValue = 0;
                 isEqualPerformed = false;
@@ -64,10 +66,13 @@ namespace Calculator
 
         private void Operator_Click(object sender, EventArgs e)
         {
+            //  Happens when we press an operator button
+            //  operators: /*-+
             Button button = (Button)sender;
 
             if(resultValue!=0)
             {
+                //clean the screen and print rV in laber
                 Button_Equals.PerformClick();
                 operationPerformed = button.Text;
                 LabelCurrentOperation.Text = resultValue + " " + operationPerformed;
@@ -84,6 +89,7 @@ namespace Calculator
 
         private void Button_CE_Click(object sender, EventArgs e)
         {
+            //CE Button set to 0
             TextBox_Result.Text = "0";
         }
 
@@ -96,7 +102,8 @@ namespace Calculator
 
         private void Button_Equals_Click(object sender, EventArgs e)
         {
-            
+            //Button that selects the operation that is going to happen if 
+            //we press the equal button
 
             switch (operationPerformed)
             {
@@ -123,6 +130,7 @@ namespace Calculator
 
         private void ButtonOneOverX_Click(object sender, EventArgs e)
         {
+            //Button that calculates the 1 over numeber
             Button button = (Button)sender;
             resultValue = double.Parse(TextBox_Result.Text);
             double res = 1 / resultValue;
@@ -132,6 +140,7 @@ namespace Calculator
 
         private void ButtonXSquare_Click(object sender, EventArgs e)
         {
+            //Button that calculates the square of a numeber
             Button button = (Button)sender;
             resultValue = double.Parse(TextBox_Result.Text);
             double res = resultValue * resultValue;
@@ -141,6 +150,7 @@ namespace Calculator
 
         private void ButtonSquareRoot_Click(object sender, EventArgs e)
         {
+            //  Button that calculates the square root of a number
             Button button = (Button)sender;
             resultValue = double.Parse(TextBox_Result.Text);
             double res = Math.Sqrt(resultValue);
@@ -150,6 +160,7 @@ namespace Calculator
 
         private void ButtonSin_Click(object sender, EventArgs e)
         {
+            //  Button thatcalculates the sin function
             Button button = (Button)sender;
             resultValue = double.Parse(TextBox_Result.Text);
             double res = (resultValue * (Math.PI)) / 180;
@@ -159,6 +170,7 @@ namespace Calculator
 
         private void ButtonCos_Click(object sender, EventArgs e)
         {
+            //  Button thatcalculates the cos function
             Button button = (Button)sender;
             resultValue = double.Parse(TextBox_Result.Text);
             double res = (resultValue * (Math.PI)) / 180;
